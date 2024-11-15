@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "organizeme-server",
   "version": "1.0.0",
   "description": "Project with the function of organizing tasks with your team.",
   "main": "src/index.ts",
@@ -8,7 +8,11 @@
     "dev": "tsx watch src/server.ts"
   },
   "keywords": [],
-  "author": "",
+  "author": {
+    "email": "gabriel.oliveira2040@hotmail.com",
+    "name": "Gabriel",
+    "url": "https://github.com/gaabssantos"
+  },
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^9.14.0",
