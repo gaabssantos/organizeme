@@ -557,28 +557,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"backend@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "backend@workspace:."
-  dependencies:
-    "@eslint/js": "npm:^9.14.0"
-    "@typescript-eslint/eslint-plugin": "npm:^8.14.0"
-    "@typescript-eslint/parser": "npm:^8.14.0"
-    dotenv: "npm:^16.4.5"
-    eslint: "npm:8.57.0"
-    eslint-config-prettier: "npm:^9.1.0"
-    eslint-plugin-import-helpers: "npm:^2.0.1"
-    eslint-plugin-prettier: "npm:^5.2.1"
-    express: "npm:^4.21.1"
-    globals: "npm:^15.12.0"
-    prettier: "npm:^3.3.3"
-    tsc: "npm:^2.0.4"
-    tsx: "npm:^4.19.2"
-    typescript: "npm:^5.6.3"
-    typescript-eslint: "npm:^8.14.0"
-  languageName: unknown
-  linkType: soft
-
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -1581,6 +1559,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"http-status-codes@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "http-status-codes@npm:2.3.0"
+  checksum: 10/1b8a01940b5e14d3c5b2f842313f4531469b41ce4fa40ca3aae5c82a3101828db2cc9406bfb2d50a46e6d521d106577b6656c2b065c76125b99ee54b2cbbac09
+  languageName: node
+  linkType: hard
+
 "https-proxy-agent@npm:^7.0.1":
   version: 7.0.5
   resolution: "https-proxy-agent@npm:7.0.5"
@@ -2124,6 +2109,30 @@ __metadata:
   checksum: 10/a8398559c60aef88d7f353a4f98dcdff6090a4e70f874c827302bf1213d9106a1c4d5fcb68dacb1feb3c30a04c4102f41047aa55d4c576b863d6fc876e001af6
   languageName: node
   linkType: hard
+
+"organizeme-server@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "organizeme-server@workspace:."
+  dependencies:
+    "@eslint/js": "npm:^9.14.0"
+    "@typescript-eslint/eslint-plugin": "npm:^8.14.0"
+    "@typescript-eslint/parser": "npm:^8.14.0"
+    dotenv: "npm:^16.4.5"
+    eslint: "npm:8.57.0"
+    eslint-config-prettier: "npm:^9.1.0"
+    eslint-plugin-import-helpers: "npm:^2.0.1"
+    eslint-plugin-prettier: "npm:^5.2.1"
+    express: "npm:^4.21.1"
+    globals: "npm:^15.12.0"
+    http-status-codes: "npm:^2.3.0"
+    prettier: "npm:^3.3.3"
+    tsc: "npm:^2.0.4"
+    tsx: "npm:^4.19.2"
+    typescript: "npm:^5.6.3"
+    typescript-eslint: "npm:^8.14.0"
+    uuid: "npm:^11.0.3"
+  languageName: unknown
+  linkType: soft
 
 "p-limit@npm:^3.0.2":
   version: 3.1.0
@@ -2767,6 +2776,15 @@ __metadata:
   version: 1.0.1
   resolution: "utils-merge@npm:1.0.1"
   checksum: 10/5d6949693d58cb2e636a84f3ee1c6e7b2f9c16cb1d42d0ecb386d8c025c69e327205aa1c69e2868cc06a01e5e20681fbba55a4e0ed0cce913d60334024eae798
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^11.0.3":
+  version: 11.0.3
+  resolution: "uuid@npm:11.0.3"
+  bin:
+    uuid: dist/esm/bin/uuid
+  checksum: 10/251385563195709eb0697c74a834764eef28e1656d61174e35edbd129288acb4d95a43f4ce8a77b8c2fc128e2b55924296a0945f964b05b9173469d045625ff2
   languageName: node
   linkType: hard
 
