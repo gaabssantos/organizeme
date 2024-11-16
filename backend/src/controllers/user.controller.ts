@@ -17,6 +17,7 @@ export class UserController {
       active: false,
       verificationCode: v4(),
     });
+
     return res.status(StatusCodes.CREATED).json(user);
   };
 }

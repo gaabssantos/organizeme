@@ -1,4 +1,5 @@
 import { UserRepository } from '../database/repositories/user.repository';
+import { UserDTO } from '../dtos/user.dto';
 
 export class UserService {
   constructor(private userRepository: UserRepository) {}
