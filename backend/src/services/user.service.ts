@@ -30,4 +30,11 @@ export class UserService {
 
     return accountFound;
   };
+
+  accountVerification = async (verificationCode: string) => {
+    const accountFound =
+      await this.userRepository.accountVerification(verificationCode);
+
+    return accountFound;
+  };
 }

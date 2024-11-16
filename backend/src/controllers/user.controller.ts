@@ -32,4 +32,22 @@ export class UserController {
 
     return res.status(StatusCodes.CREATED).json(user);
   };
+
+  accountVerification = async (req: Request, res: Response) => {
+    const { code } = req.params;
+
+    const accountFound = await this.userService.accountVerification(code);
+
+    if (accountFound) {
+      return res.status(StatusCodes.OK).json({
+        message: 'Your account was verified.',
+        messageCode: 'account_verified',
+      });
+    } else {
+      return res.status(StatusCodes.UNAUTHORIZED).json({
+        errMessage: 'This code is incorrect or expired.',
+        errCode: 'code_incorrect',
+      });
+    }
+  };
 }
