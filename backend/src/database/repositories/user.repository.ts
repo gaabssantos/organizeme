@@ -1,20 +1,27 @@
 import { sequelize } from '..';
 
 import { UserEntity } from '../../entities/user.entity';
+import User from '../models/user.model';
 
 export class UserRepository {
   create = async ({
+    id,
     name,
     email,
     password,
     verificationCode,
     active,
   }: UserEntity) => {
-    const queryInterface = sequelize.getQueryInterface();
-    const userCreated = { name, email, password, verificationCode, active };
+    const userCreated = { id, name, email, password, verificationCode, active };
 
-    await queryInterface.bulkInsert('Users', [userCreated]);
+    await User.create(userCreated);
 
     return userCreated;
+  };
+
+  findByEmail = async (email: string) => {
+    const accountFound = await User.findOne({ where: { email } });
+
+    return accountFound;
   };
 }
