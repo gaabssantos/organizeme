@@ -5,6 +5,11 @@ import { sequelize } from '..';
 const User = sequelize.define(
   'Users',
   {
+    id: {
+      type: DataTypes.STRING,
+      primaryKey: true,
+      allowNull: false,
+    },
     name: {
       type: DataTypes.STRING,
       allowNull: false,

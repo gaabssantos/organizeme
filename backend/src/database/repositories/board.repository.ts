@@ -1,5 +1,5 @@
 import { BoardEntity } from '../../entities/board.entity';
-import Board from '../models/boards.model';
+import Board from '../models/board.model';
 
 export class BoardRepository {
   create = async ({

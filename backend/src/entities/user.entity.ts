@@ -1,5 +1,5 @@
 type User = {
-  id?: string;
+  id: string;
   name: string;
   email: string;
   password: string;
@@ -8,7 +8,7 @@ type User = {
 };
 
 export class UserEntity {
-  public id?: string;
+  public id: string;
   public name: string;
   public email: string;
   public password: string;

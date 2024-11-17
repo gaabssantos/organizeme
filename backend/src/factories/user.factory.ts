@@ -14,6 +14,6 @@ export class UserFactory {
 
     this.userService = service;
 
-    return service;
+    return this.userService;
   }
 }

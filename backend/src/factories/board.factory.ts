@@ -14,6 +14,6 @@ export class BoardFactory {
 
     this.boardService = service;
 
-    return service;
+    return this.boardService;
   }
 }
