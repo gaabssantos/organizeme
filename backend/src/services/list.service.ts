@@ -16,4 +16,10 @@ export class ListService {
 
     return listCreated;
   };
+
+  findBoardById = async (id: string) => {
+    const board = await this.listRespository.findBoardById(id);
+
+    return board;
+  };
 }
