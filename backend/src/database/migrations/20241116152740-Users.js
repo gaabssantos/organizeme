@@ -8,6 +8,7 @@ module.exports = {
     return queryInterface.createTable('Users', {
       id: {
         type: DataTypes.STRING,
+        primaryKey: true,
         allowNull: false,
       },
       name: {
