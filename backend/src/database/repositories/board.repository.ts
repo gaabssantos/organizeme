@@ -14,4 +14,10 @@ export class BoardRepository {
 
     return boardCreated;
   };
+
+  index = async (id: string) => {
+    const boards = Board.findAll({ where: { id_user: id } });
+
+    return boards;
+  };
 }

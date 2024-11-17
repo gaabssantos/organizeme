@@ -24,4 +24,15 @@ export class BoardController {
       next(err);
     }
   };
+
+  index = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const id = req.query.userId as string;
+      const boards = await this.boardService.index(id);
+
+      return res.status(StatusCodes.OK).json(boards);
+    } catch (err) {
+      next(err);
+    }
+  };
 }

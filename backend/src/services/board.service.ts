@@ -16,4 +16,10 @@ export class BoardService {
 
     return boardCreated;
   };
+
+  index = async (id: string) => {
+    const boards = await this.boardRepository.index(id);
+
+    return boards;
+  };
 }
