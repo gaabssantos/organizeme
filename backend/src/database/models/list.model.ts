@@ -22,10 +22,6 @@ const List = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    cards: {
-      type: DataTypes.ARRAY(DataTypes.JSON),
-      allowNull: true,
-    },
   },
   {
     createdAt: false,

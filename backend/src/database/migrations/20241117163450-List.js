@@ -23,10 +23,6 @@ module.exports = {
           key: 'id',
         },
       },
-      cards: {
-        type: DataTypes.ARRAY(DataTypes.JSON),
-        allowNull: true,
-      },
     });
   },
 

@@ -6,12 +6,11 @@ import { ListDTO } from '../dtos/list.dto';
 export class ListService {
   constructor(private listRespository: ListRepository) {}
 
-  create = async ({ board_id, name, cards }: ListDTO) => {
+  create = async ({ board_id, name }: ListDTO) => {
     const listCreated = await this.listRespository.create({
       id: v4(),
       board_id,
       name,
-      cards,
     });
 
     return listCreated;
