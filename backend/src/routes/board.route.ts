@@ -14,6 +14,7 @@ board.post(
   validator({ schema: boardSchema, type: ParamsType.BODY }),
   controller.create,
 );
+board.delete('/delete/:id', controller.delete);
 board.get('/', controller.index);
 
 export default board;

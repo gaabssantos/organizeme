@@ -17,6 +17,12 @@ export class BoardService {
     return boardCreated;
   };
 
+  delete = async (id: string) => {
+    const boardDeleted = await this.boardRepository.delete(id);
+
+    return boardDeleted;
+  };
+
   index = async (id: string) => {
     const boards = await this.boardRepository.index(id);
 

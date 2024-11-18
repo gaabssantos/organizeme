@@ -25,6 +25,18 @@ export class BoardController {
     }
   };
 
+  delete = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { id } = req.params;
+
+      const boardDeleted = await this.boardService.delete(id);
+
+      return res.status(StatusCodes.OK).json(boardDeleted);
+    } catch (err) {
+      next(err);
+    }
+  };
+
   index = async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id = req.query.userId as string;

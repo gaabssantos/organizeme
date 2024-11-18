@@ -1,5 +1,7 @@
 import { BoardEntity } from '../../entities/board.entity';
 import Board from '../models/board.model';
+import Card from '../models/card.model';
+import List from '../models/list.model';
 
 export class BoardRepository {
   create = async ({
@@ -13,6 +15,21 @@ export class BoardRepository {
     await Board.create(boardCreated);
 
     return boardCreated;
+  };
+
+  delete = async (id: string) => {
+    const list = await List.findOne({ where: { board_id: id } });
+    await Card.destroy({
+      where: { list_id: list?.getDataValue('id') },
+    });
+    await List.destroy({
+      where: { board_id: id },
+    });
+    const boardDeleted = await Board.destroy({
+      where: { id },
+    });
+
+    return boardDeleted;
   };
 
   index = async (id: string) => {
