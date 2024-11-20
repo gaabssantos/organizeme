@@ -62,4 +62,9 @@ export const Menu = styled.ul`
     color: ${themes.white};
     border: 1px solid ${themes.primaryColor};
   }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
