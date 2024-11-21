@@ -6,6 +6,7 @@ export const Container = styled.div`
   background-color: ${themes.navColor};
   color: ${themes.textColor};
   padding: 0.5rem 2rem;
+  border-bottom: 1px solid #31383d;
 
   h1 {
     font-size: 1rem;
@@ -35,7 +36,7 @@ export const Menu = styled.ul`
     transition: 0.2s;
 
     &:hover {
-      background-color: #333c43;
+      background-color: ${themes.hoverColor};
     }
   }
 
