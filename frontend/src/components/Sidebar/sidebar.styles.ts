@@ -5,9 +5,9 @@ import { themes } from '../../styles/themes.style';
 export const Container = styled.aside`
   background-color: ${themes.sideColor};
   color: ${themes.textColor};
-  width: 18%;
+  width: 30%;
   padding: 1rem;
-  height: 100vh;
+  height: 91.8vh;
 
   @media (max-width: 800px) {
     width: 30%;
