@@ -4,6 +4,8 @@ export const themes = {
   textColor: '#B6C2CF',
   hoverColor: '#333c43',
   primaryColor: '#1275ff',
+  listColor: '#101204',
+  cardColor: '#22272B',
   black: '#000000',
   white: '#ffffff',
 };
