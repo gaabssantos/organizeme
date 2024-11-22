@@ -52,6 +52,7 @@ export const Menu = styled.ul`
     padding: 0.5rem 1rem;
     border-radius: 5px;
     opacity: 0.7;
+    color: ${themes.white};
 
     &:hover {
       opacity: 1;
