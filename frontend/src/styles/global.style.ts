@@ -7,4 +7,9 @@ export const GlobalStyles = createGlobalStyle`
         box-sizing: border-box;
         font-family: Roboto, Arial, Helvetica, sans-serif;
     }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 `;
