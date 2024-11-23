@@ -1,11 +1,7 @@
-import Home from './screens/Home/home.screen';
+import { AppRoutes } from './routes/routes';
 
 function App() {
-  return (
-    <div>
-      <Home />
-    </div>
-  );
+  return <AppRoutes />;
 }
 
 export default App;
