@@ -1,5 +1,5 @@
 export const themes = {
-  primaryColor: '#1275ff',
+  primaryColor: '#29B421',
   navColor: '#1D2125',
   sideColor: '#221D24',
   textColor: '#B6C2CF',
