@@ -1,9 +1,11 @@
 import { IoIosArrowDown } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import { Container, Menu } from './header.styles';
 
 const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <Container>
       <Menu>
@@ -20,10 +22,10 @@ const Header = () => {
           <button>Criar</button>
         </div>
         <div>
-          <button>
-            <Link to={'/login'}>Login</Link>
+          <button onClick={() => navigate('/login')}>Login</button>
+          <button onClick={() => navigate('/register')} id="btn-register">
+            Cadastrar
           </button>
-          <button id="btn-register">Cadastrar</button>
         </div>
       </Menu>
     </Container>
