@@ -57,6 +57,14 @@ export const LoginRegisterBox = styled.div`
   a:visited {
     color: ${themes.primaryColor};
   }
+
+  @media (max-width: 600px) {
+    width: 70%;
+  }
+
+  @media (min-width: 601px) and (max-width: 800px) {
+    width: 60%;
+  }
 `;
 
 export const Divisor = styled.div`
@@ -64,4 +72,16 @@ export const Divisor = styled.div`
   height: 2px;
   border: 1px solid #e0e2e7;
   margin: 2rem auto;
+`;
+
+export const ErrorMessage = styled.div`
+  color: ${themes.error};
+  border: 1px solid ${themes.error};
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
