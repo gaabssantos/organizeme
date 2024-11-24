@@ -8,4 +8,6 @@ export const themes = {
   cardColor: '#22272B',
   black: '#000000',
   white: '#ffffff',
+  error: '#ff5436',
+  success: '#5cb85c',
 };
