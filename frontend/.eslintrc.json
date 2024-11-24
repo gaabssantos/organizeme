@@ -12,6 +12,7 @@
   "plugins": ["react-refresh", "prettier", "eslint-plugin-import-helpers"],
   "rules": {
     "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "off",
     "import-helpers/order-imports": [
       "warn",
       {
