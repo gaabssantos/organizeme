@@ -1,4 +1,4 @@
-import Axios, { AxiosInstance } from 'axios';
+import Axios, { AxiosError, AxiosInstance } from 'axios';
 
 export interface IAxiosInstanceParams {
   authorization: string;
@@ -8,7 +8,7 @@ export interface IAxiosInstanceParams {
 
 export interface IReturn<T> {
   result: T;
-  error?: Error;
+  error?: AxiosError;
 }
 
 type HTTPMethod = 'get' | 'post' | 'put' | 'delete';
@@ -69,9 +69,9 @@ export class RemoteService {
 
       return { result: response?.data };
     } catch (err) {
-      const error = err as Error;
+      const error = err as AxiosError;
 
-      return { error, result: undefined as unknown as T };
+      return { error: error, result: undefined as unknown as T };
     }
   }
 }
