@@ -3,6 +3,7 @@ import { NextFunction, Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { v4 } from 'uuid';
 
+import { sendEmail } from '../services/email/email.service';
 import { UserService } from '../services/user.service';
 
 export class UserController {
@@ -30,6 +31,8 @@ export class UserController {
         active: false,
         verificationCode: v4(),
       });
+
+      sendEmail(email, name, user.verificationCode);
 
       return res.status(StatusCodes.CREATED).json(user);
     } catch (err) {

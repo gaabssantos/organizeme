@@ -26,9 +26,12 @@ export class UserRepository {
   accountVerification = async (verificationCode: string) => {
     const accountFound = await User.findOne({ where: { verificationCode } });
 
-    if (!accountFound?.getDataValue('active')) {
-      accountFound?.update({ active: true });
+    if (accountFound) {
+      if (!accountFound.getDataValue('active')) {
+        accountFound?.update({ active: true });
 
+        return true;
+      }
       return true;
     } else {
       return false;
