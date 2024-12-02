@@ -1,6 +1,5 @@
 import { useFormik } from 'formik';
 import { withZodSchema } from 'formik-validator-zod';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import z from 'zod';
 
@@ -11,6 +10,7 @@ import {
   LoginRegisterBox,
 } from '../../components/global.component';
 import Header from '../../components/Header/header.component';
+import { useCardMessage } from '../../context/useCardMessage';
 import useRegister from '../../hooks/useRegister';
 
 const RegisterFormSchema = z
@@ -38,15 +38,7 @@ type ResponseType = {
 };
 
 const Register = () => {
-  const [cardMessage, setCardMessage] = useState<{
-    typeMessage: 'error' | 'success' | '';
-    headerMessage: string | boolean;
-    message: string | boolean;
-  }>({
-    typeMessage: '',
-    headerMessage: '',
-    message: '',
-  });
+  const { message, setCardMessage } = useCardMessage();
 
   const formik = useFormik<RegisterFormSchemaType>({
     initialValues: {
@@ -88,15 +80,15 @@ const Register = () => {
     <div>
       <Header />
 
-      {(cardMessage.typeMessage !== '' ||
-        cardMessage.headerMessage !== '' ||
-        cardMessage.message !== '') && (
-        <CardMessage
-          typeMessage={cardMessage.typeMessage}
-          headerMessage={cardMessage.headerMessage}
-          message={cardMessage.message}
-        />
-      )}
+      {message.typeMessage !== '' &&
+        message.headerMessage !== '' &&
+        message.message !== '' && (
+          <CardMessage
+            typeMessage={message.typeMessage}
+            headerMessage={message.headerMessage}
+            message={message.message}
+          />
+        )}
 
       <LoginRegisterBox>
         <h2>Registre uma conta</h2>
