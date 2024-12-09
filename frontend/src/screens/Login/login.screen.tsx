@@ -68,13 +68,18 @@ const Login = () => {
           if (count === 0) {
             navigate('/');
 
+            const user = {
+              name: response.result.name,
+              token: response.result.token,
+            };
+
+            localStorage.setItem('orgazineme:userData', JSON.stringify(user));
+
             setCardMessage({ typeMessage: '', headerMessage: '', message: '' });
             clearInterval(interval);
           }
         }, 1000);
       }
-
-      console.log(response);
     },
     validate: withZodSchema(LoginFormSchema),
     validateOnChange: false,
