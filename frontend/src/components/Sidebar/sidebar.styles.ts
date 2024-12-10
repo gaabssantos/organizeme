@@ -2,6 +2,10 @@ import styled from 'styled-components';
 
 import { themes } from '../../styles/themes.style';
 
+type BoardColorType = {
+  $color: string;
+};
+
 export const Container = styled.aside`
   background-color: ${themes.sideColor};
   color: ${themes.textColor};
@@ -50,8 +54,8 @@ export const Board = styled.div`
   }
 `;
 
-export const BoardColor = styled.div`
-  background-color: #a4527b;
+export const BoardColor = styled.div<BoardColorType>`
+  background-color: ${(props) => props.$color};
   width: 20px;
   height: 20px;
 `;
