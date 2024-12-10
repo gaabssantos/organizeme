@@ -11,8 +11,6 @@ export class BoardController {
       const { name, color } = req.body;
       const id_user = req.query.userId as string;
 
-      console.log(id_user);
-
       const boardCreated = await this.boardService.create({
         id_user,
         name,
