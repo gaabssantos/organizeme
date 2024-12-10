@@ -1,5 +1,6 @@
 import { IoAddSharp } from 'react-icons/io5';
 
+import { useModal } from '../../context/useModal';
 import { useUserLogged } from '../../context/useUserLogged';
 import {
   Board,
@@ -11,12 +12,13 @@ import {
 
 const Sidebar = () => {
   const isUserLogged = useUserLogged();
+  const modal = useModal();
 
   return (
     <Container>
       <SideItem>
         <span>Seus boards</span>
-        <IoAddSharp />
+        <IoAddSharp onClick={modal?.openModal} />
       </SideItem>
       {isUserLogged?.isUserLogged() && (
         <>

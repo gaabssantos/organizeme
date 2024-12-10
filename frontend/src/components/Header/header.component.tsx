@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { useNavigate } from 'react-router-dom';
 
+import { useModal } from '../../context/useModal';
 import { useUserLogged } from '../../context/useUserLogged';
 import { Container, Menu } from './header.styles';
 
@@ -10,6 +11,8 @@ const Header = () => {
 
   const [userName, setUserName] = useState('');
   const isUserLogged = useUserLogged();
+
+  const modal = useModal();
 
   useEffect(() => {
     if (localStorage.getItem('orgazineme:userData')) {
@@ -38,7 +41,7 @@ const Header = () => {
             Favoritos
             <IoIosArrowDown />
           </li>
-          <button>Criar</button>
+          <button onClick={modal?.openModal}>Criar</button>
         </div>
 
         {!isUserLogged?.isUserLogged() ? (
