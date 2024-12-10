@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 
 import App from './App.tsx';
+import { BoardsProvider } from './context/useBoards.tsx';
 import { CardMessageProvider } from './context/useCardMessage.tsx';
 import { ModalProvider } from './context/useModal.tsx';
 import { UserLoggedProvider } from './context/useUserLogged.tsx';
@@ -14,8 +15,10 @@ createRoot(document.getElementById('root')!).render(
       <CardMessageProvider>
         <UserLoggedProvider>
           <ModalProvider>
-            <GlobalStyles />
-            <App />
+            <BoardsProvider>
+              <GlobalStyles />
+              <App />
+            </BoardsProvider>
           </ModalProvider>
         </UserLoggedProvider>
       </CardMessageProvider>
