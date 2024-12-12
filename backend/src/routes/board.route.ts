@@ -15,6 +15,8 @@ board.post(
   controller.create,
 );
 board.delete('/delete/:id', controller.delete);
+
 board.get('/', controller.index);
+board.get('/:id', controller.indexById);
 
 export default board;

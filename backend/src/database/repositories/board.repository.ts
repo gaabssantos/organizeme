@@ -37,4 +37,10 @@ export class BoardRepository {
 
     return boards;
   };
+
+  indexById = async (id: string) => {
+    const boards = Board.findByPk(id);
+
+    return boards;
+  };
 }
