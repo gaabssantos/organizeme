@@ -1,17 +1,54 @@
+import { useEffect, useState } from 'react';
 import { IoAddSharp } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
+import { useBoards } from '../../context/useBoards';
 import { useUserLogged } from '../../context/useUserLogged';
+import { useBoardIndexId } from '../../hooks/useBoard';
 import { BoardHeader, BoardLists, Card, Container, List } from './board.styles';
 
-const Board = () => {
+type BoardProps = {
+  currentId: string | undefined;
+};
+
+interface IBoard {
+  id: string;
+  id_user: string;
+  name: string;
+  color: string;
+}
+
+const Board = ({ currentId }: BoardProps) => {
   const isUserLogged = useUserLogged();
+  const [board, setBoard] = useState<IBoard>({
+    id: '',
+    id_user: '',
+    name: '',
+    color: '#000000',
+  });
+
+  const navigate = useNavigate();
+  const boardsArr = useBoards();
+
+  useEffect(() => {
+    const fetchBoardsId = async () => {
+      const boards = await useBoardIndexId(currentId as string);
+
+      if (!boards.result) return false;
+
+      setBoard(boards.result);
+    };
+
+    fetchBoardsId();
+  }, [boardsArr?.boards, currentId, navigate]);
 
   return (
-    <Container>
+    <Container $color={board.color}>
       {isUserLogged?.isUserLogged() ? (
         <>
           <BoardHeader>
-            <h1>My Board</h1>
+            <h1>{board?.name}</h1>
+            <IoAddSharp />
           </BoardHeader>
           <BoardLists>
             <List>

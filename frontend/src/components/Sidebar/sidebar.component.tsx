@@ -1,10 +1,8 @@
-import { useEffect } from 'react';
 import { IoAddSharp } from 'react-icons/io5';
 
 import { useBoards } from '../../context/useBoards';
 import { useModal } from '../../context/useModal';
 import { useUserLogged } from '../../context/useUserLogged';
-import { useBoardIndex } from '../../hooks/useBoard';
 import {
   Board,
   BoardColor,
@@ -13,27 +11,10 @@ import {
   SideItem,
 } from './sidebar.styles';
 
-interface IBoard {
-  color: string;
-  id: string;
-  id_user: string;
-  name: string;
-}
-
 const Sidebar = () => {
   const isUserLogged = useUserLogged();
   const modal = useModal();
   const boards = useBoards();
-
-  useEffect(() => {
-    const fetchBoards = async () => {
-      const response = await useBoardIndex();
-
-      boards?.setBoards(response.result as IBoard[]);
-    };
-
-    fetchBoards();
-  }, [boards]);
 
   return (
     <Container>

@@ -2,9 +2,13 @@ import styled from 'styled-components';
 
 import { themes } from '../../styles/themes.style';
 
-export const Container = styled.div`
+type ContainerProps = {
+  $color: string;
+};
+
+export const Container = styled.div<ContainerProps>`
   padding: 1rem;
-  background-color: #a4527b;
+  background-color: ${(props) => props.$color};
   color: ${themes.white};
   width: 80%;
 
@@ -20,15 +24,30 @@ export const BoardHeader = styled.main`
   margin-right: -1rem;
   padding: 1rem;
   font-size: 0.7rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  svg {
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  svg:hover {
+    background-color: ${themes.hoverColor};
+    opacity: 0.5;
+    border-radius: 5px;
+  }
 `;
 
 export const BoardLists = styled.div`
-  display: flex;
   gap: 2rem;
   overflow-x: auto;
   white-space: nowrap;
   height: 90%;
   margin: 0 -1rem;
+  display: flex;
 
   &::-webkit-scrollbar {
     height: 8px;
