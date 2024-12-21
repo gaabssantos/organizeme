@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-import RedirectFunction from '../components/RedirectFunction/redirect-function.component';
 import { useBoards } from '../context/useBoards';
 import { useBoardIndex } from '../hooks/useBoard';
 import Home from '../screens/Home/home.screen';
@@ -31,14 +30,11 @@ export const AppRoutes = () => {
 
   return (
     <Routes>
-      <Route path="/board/:id" element={<Home />} />
+      <Route path="/" element={<Home />} />
       <Route path="/verification/:code" element={<Verification />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route
-        path="*"
-        element={<RedirectFunction to={`/board/${boards?.boards[0].id}`} />}
-      />
+      <Route path="/board/:boardId" element={<Home />} />
     </Routes>
   );
 };
