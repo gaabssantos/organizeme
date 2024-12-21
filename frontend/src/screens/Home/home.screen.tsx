@@ -15,7 +15,7 @@ const Home = () => {
       <Modal />
       <Flex>
         <Sidebar />
-        <Board currentId={params.id} />
+        <Board currentId={params.boardId} />
       </Flex>
     </div>
   );
