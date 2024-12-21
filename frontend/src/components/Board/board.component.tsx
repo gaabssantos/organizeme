@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import { useBoards } from '../../context/useBoards';
 import { useUserLogged } from '../../context/useUserLogged';
 import { useBoardIndexId } from '../../hooks/useBoard';
+import { themes } from '../../styles/themes.style';
+import SkeletonCard from '../SkeletonCard/skeleton-card.component';
 import { BoardHeader, BoardLists, Card, Container, List } from './board.styles';
 
 type BoardProps = {
@@ -43,61 +45,67 @@ const Board = ({ currentId }: BoardProps) => {
   }, [boardsArr?.boards, currentId, navigate]);
 
   return (
-    <Container $color={board.color}>
+    <Container $color={board.name !== '' ? board.color : themes.black}>
       {isUserLogged?.isUserLogged() ? (
-        <>
-          <BoardHeader>
-            <h1>{board?.name}</h1>
-            <IoAddSharp />
-          </BoardHeader>
-          <BoardLists>
-            <List>
-              <h3>To do</h3>
-              <Card>Project planning</Card>
-              <Card>Teste</Card>
-              <button>
-                <IoAddSharp />
-                Add card
-              </button>
-            </List>
-            <List>
-              <h3>To do</h3>
-              <Card>Project planning</Card>
-              <Card>Teste</Card>
-              <button>
-                <IoAddSharp />
-                Add card
-              </button>
-            </List>
-            <List>
-              <h3>To do</h3>
-              <Card>Project planning</Card>
-              <Card>Teste</Card>
-              <button>
-                <IoAddSharp />
-                Add card
-              </button>
-            </List>
-            <List>
-              <h3>To do</h3>
-              <Card>Project planning</Card>
-              <Card>Teste</Card>
-              <button>
-                <IoAddSharp />
-                Add card
-              </button>
-            </List>
-            <List>
-              <h3>To do</h3>
-              <Card>Project planning</Card>
-              <Card>Teste</Card>
-              <button>
-                <IoAddSharp />
-                Add card
-              </button>
-            </List>
-          </BoardLists>
-        </>
+        board.name !== '' ? (
+          <>
+            <BoardHeader>
+              <h1>{board?.name}</h1>
+              <IoAddSharp />
+            </BoardHeader>
+            <BoardLists>
+              <List>
+                <h3>To do</h3>
+                <Card>Project planning</Card>
+                <Card>Teste</Card>
+                <button>
+                  <IoAddSharp />
+                  Add card
+                </button>
+              </List>
+              <List>
+                <h3>To do</h3>
+                <Card>Project planning</Card>
+                <Card>Teste</Card>
+                <button>
+                  <IoAddSharp />
+                  Add card
+                </button>
+              </List>
+              <List>
+                <h3>To do</h3>
+                <Card>Project planning</Card>
+                <Card>Teste</Card>
+                <button>
+                  <IoAddSharp />
+                  Add card
+                </button>
+              </List>
+              <List>
+                <h3>To do</h3>
+                <Card>Project planning</Card>
+                <Card>Teste</Card>
+                <button>
+                  <IoAddSharp />
+                  Add card
+                </button>
+              </List>
+              <List>
+                <h3>To do</h3>
+                <Card>Project planning</Card>
+                <Card>Teste</Card>
+                <button>
+                  <IoAddSharp />
+                  Add card
+                </button>
+              </List>
+            </BoardLists>
+          </>
+        ) : (
+          <>
+            <SkeletonCard />
+          </>
+        )
       ) : (
         <div>
           <h2>Você não está logado!</h2>
