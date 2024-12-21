@@ -10,12 +10,14 @@ export function errorHandler(
   __: NextFunction,
 ) {
   if (error instanceof AppError) {
-    return res
+    res
       .status(error.statusCode)
       .json({ errorMessage: error.errorMessage, errorCode: error.errorCode });
+
+    return;
   }
 
-  return res
-    .status(StatusCodes.INTERNAL_SERVER_ERROR)
-    .json({ error: error.message });
+  res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({ error: error.message });
+
+  return;
 }
