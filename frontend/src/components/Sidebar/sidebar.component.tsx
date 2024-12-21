@@ -1,4 +1,5 @@
 import { IoAddSharp } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 import { useBoards } from '../../context/useBoards';
 import { useModal } from '../../context/useModal';
@@ -15,6 +16,7 @@ const Sidebar = () => {
   const isUserLogged = useUserLogged();
   const modal = useModal();
   const boards = useBoards();
+  const navigate = useNavigate();
 
   return (
     <Container>
@@ -25,7 +27,10 @@ const Sidebar = () => {
       {isUserLogged?.isUserLogged() && (
         <>
           {boards?.boards.map((board) => (
-            <Board key={board.id}>
+            <Board
+              key={board.id}
+              onClick={() => navigate(`/board/${board.id}`)}
+            >
               <BoardColor $color={board.color} />
               <BoardText>{board.name}</BoardText>
             </Board>
