@@ -30,4 +30,16 @@ export class ListController {
       next(err);
     }
   };
+
+  indexByBoardId = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const { boardId } = req.params;
+
+      const lists = await this.listService.indexByBoardId(boardId);
+
+      res.status(StatusCodes.OK).json(lists);
+    } catch (err) {
+      next(err);
+    }
+  };
 }

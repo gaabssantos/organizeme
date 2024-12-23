@@ -16,4 +16,10 @@ export class ListRepository {
 
     return board;
   };
+
+  indexByBoardId = async (boardId: string) => {
+    const lists = await List.findAll({ where: { board_id: boardId } });
+
+    return lists;
+  };
 }

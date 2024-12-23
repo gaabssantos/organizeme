@@ -15,4 +15,6 @@ list.post(
   controller.create,
 );
 
+list.get('/:boardId', controller.indexByBoardId);
+
 export default list;
