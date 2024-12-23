@@ -26,7 +26,7 @@ export const AppRoutes = () => {
     };
 
     fetchBoards();
-  }, [boards]);
+  }, []);
 
   return (
     <Routes>
