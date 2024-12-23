@@ -13,11 +13,11 @@
     "axios": "^1.7.7",
     "formik": "^2.4.6",
     "formik-validator-zod": "^2.0.1",
-    "react": "^18.3.1",
+    "react": "^18.2.0",
     "react-dom": "^18.3.1",
     "react-icons": "^5.3.0",
     "react-loading-skeleton": "^3.5.0",
-    "react-modal": "^3.16.1",
+    "react-modal": "^3.15.1",
     "react-router-dom": "^7.0.1",
     "styled-components": "^6.1.13",
     "zod": "^3.23.8"
@@ -26,7 +26,7 @@
     "@eslint/js": "^9.13.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
-    "@types/react-modal": "^3",
+    "@types/react-modal": "^3.13.1",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@typescript-eslint/parser": "^8.15.0",
     "@vitejs/plugin-react": "^4.3.3",
@@ -39,7 +39,7 @@
     "eslint-plugin-react-refresh": "^0.4.14",
     "globals": "^15.11.0",
     "prettier": "^3.3.3",
-    "typescript": "~5.6.2",
+    "typescript": "~4.8.4",
     "typescript-eslint": "^8.11.0",
     "vite": "^5.4.10"
   }
