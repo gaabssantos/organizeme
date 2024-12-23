@@ -8,15 +8,33 @@ import { Flex } from '../../components/global.component';
 import Header from '../../components/Header/header.component';
 import Modal from '../../components/Modal/modal.component';
 import Sidebar from '../../components/Sidebar/sidebar.component';
+import { useBoards } from '../../context/useBoards';
 import { useModal } from '../../context/useModal';
-import { useBoardCreate } from '../../hooks/useBoard';
+import { useBoardCreate, useBoardIndex } from '../../hooks/useBoard';
 import { useListCreate } from '../../hooks/useList';
 import { themes } from '../../styles/themes.style';
+
+interface IBoard {
+  id: string;
+  id_user: string;
+  name: string;
+  color: string;
+}
 
 const Home = () => {
   const params = useParams();
   const modal = useModal();
   const location = useLocation();
+
+  const boardsContext = useBoards();
+
+  const fetchBoardsId = async () => {
+    const boards = await useBoardIndex();
+
+    if (!boards.result) return false;
+
+    boardsContext?.setBoards(boards.result as unknown as IBoard[]);
+  };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const BoardFormSchema = z.object({
@@ -43,6 +61,8 @@ const Home = () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     onSubmit: async (values: any) => {
       await useBoardCreate(values);
+
+      fetchBoardsId();
 
       modal?.closeModal();
       boardFormik.resetForm();

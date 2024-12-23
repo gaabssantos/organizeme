@@ -12,4 +12,8 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
+
+    body {
+        overflow-y: hidden;
+    }
 `;

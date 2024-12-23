@@ -11,6 +11,7 @@ export const Container = styled.div<ContainerProps>`
   background-color: ${(props) => props.$color};
   color: ${themes.white};
   width: 80%;
+  height: 95vh;
 
   @media (max-width: 800px) {
     width: 70%;
@@ -77,6 +78,9 @@ export const List = styled.div`
   min-width: 300px;
   height: max-content;
   margin: 1rem;
+  max-height: 80%;
+  overflow-x: auto;
+  white-space: nowrap;
 
   h3 {
     font-size: 0.9rem;
@@ -105,6 +109,24 @@ export const List = styled.div`
   button svg {
     font-size: 1.2rem;
   }
+
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+  }
 `;
 
 export const Card = styled.div`
@@ -113,4 +135,15 @@ export const Card = styled.div`
   padding: 0.5rem;
   border-radius: 10px;
   font-size: 0.9rem;
+`;
+
+export const CardInput = styled.input`
+  width: 100%;
+  background-color: ${themes.cardColor};
+  border: 0;
+  padding: 0.5rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  color: ${themes.textColor};
 `;

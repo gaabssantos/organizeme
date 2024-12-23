@@ -14,10 +14,6 @@ module.exports = {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      description: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       list_id: {
         type: DataTypes.STRING,
         allowNull: false,

@@ -14,10 +14,6 @@ const Card = sequelize.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     list_id: {
       type: DataTypes.STRING,
       allowNull: false,

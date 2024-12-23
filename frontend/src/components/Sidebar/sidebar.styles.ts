@@ -11,7 +11,9 @@ export const Container = styled.aside`
   color: ${themes.textColor};
   width: 30%;
   padding: 1rem;
-  height: 91.8vh;
+  height: 93vh;
+  overflow-y: auto;
+  overflow-x: hidden;
 
   @media (max-width: 800px) {
     width: 30%;

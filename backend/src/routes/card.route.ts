@@ -15,4 +15,6 @@ card.post(
   controller.create,
 );
 
+card.get('/', controller.index);
+
 export default card;

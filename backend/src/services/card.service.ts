@@ -6,11 +6,10 @@ import { CardDTO } from '../dtos/card.dto';
 export class CardService {
   constructor(private cardRepository: CardRepository) {}
 
-  create = async ({ name, description, list_id }: CardDTO) => {
+  create = async ({ name, list_id }: CardDTO) => {
     const cardCreated = await this.cardRepository.create({
       id: v4(),
       name,
-      description,
       list_id,
     });
 
@@ -21,5 +20,11 @@ export class CardService {
     const list = await this.cardRepository.findListById(id);
 
     return list;
+  };
+
+  index = async () => {
+    const lists = await this.cardRepository.index();
+
+    return lists;
   };
 }

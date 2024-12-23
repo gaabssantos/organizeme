@@ -9,7 +9,7 @@ export class CardController {
 
   create = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const { name, description, list_id } = req.body;
+      const { name, list_id } = req.body;
 
       const listFound = await this.cardService.findListById(list_id);
 
@@ -23,11 +23,20 @@ export class CardController {
 
       const card = await this.cardService.create({
         name,
-        description,
         list_id,
       });
 
       res.status(StatusCodes.CREATED).json(card);
+    } catch (err) {
+      next(err);
+    }
+  };
+
+  index = async (_: Request, res: Response, next: NextFunction) => {
+    try {
+      const lists = await this.cardService.index();
+
+      res.status(StatusCodes.OK).json(lists);
     } catch (err) {
       next(err);
     }
