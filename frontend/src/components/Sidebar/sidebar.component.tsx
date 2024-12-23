@@ -22,7 +22,7 @@ const Sidebar = () => {
     <Container>
       <SideItem>
         <span>Seus boards</span>
-        <IoAddSharp onClick={modal?.openModal} />
+        <IoAddSharp onClick={() => modal?.openModal('board')} />
       </SideItem>
       {isUserLogged?.isUserLogged() && (
         <>

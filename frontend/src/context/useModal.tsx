@@ -1,9 +1,9 @@
 import { createContext, ReactNode, useContext, useState } from 'react';
 
 interface ModalType {
-  openModal: () => void;
+  activeModal: string | null;
+  openModal: (modalName: string) => void;
   closeModal: () => void;
-  modalIsOpen: boolean;
 }
 
 const ModalContext = createContext<ModalType | null>(null);
@@ -13,18 +13,13 @@ interface ModalProviderProps {
 }
 
 export function ModalProvider({ children }: ModalProviderProps) {
-  const [modalIsOpen, setIsOpen] = useState(false);
+  const [activeModal, setActiveModal] = useState<string | null>(null);
 
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-  }
+  const openModal = (modalName: string) => setActiveModal(modalName);
+  const closeModal = () => setActiveModal(null);
 
   return (
-    <ModalContext.Provider value={{ openModal, closeModal, modalIsOpen }}>
+    <ModalContext.Provider value={{ activeModal, openModal, closeModal }}>
       {children}
     </ModalContext.Provider>
   );

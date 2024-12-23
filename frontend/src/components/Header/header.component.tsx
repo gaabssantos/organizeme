@@ -41,7 +41,7 @@ const Header = () => {
             Favoritos
             <IoIosArrowDown />
           </li>
-          <button onClick={modal?.openModal}>Criar</button>
+          <button onClick={() => modal?.openModal('board')}>Criar</button>
         </div>
 
         {!isUserLogged?.isUserLogged() ? (

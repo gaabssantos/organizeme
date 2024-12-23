@@ -1,29 +1,17 @@
-import { useFormik } from 'formik';
-import { withZodSchema } from 'formik-validator-zod';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FormikProps } from 'formik';
+import React, { ReactNode } from 'react';
 import ReactModal from 'react-modal';
-import { z } from 'zod';
 
-import { useModal } from '../../context/useModal';
-import { useBoardCreate } from '../../hooks/useBoard';
-import { themes } from '../../styles/themes.style';
+type ModalProps = {
+  title: string;
+  children: ReactNode;
+  formik: FormikProps<any>;
+  isOpen: boolean;
+  closeModal: () => void;
+};
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const BoardFormSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(5, { message: 'O nome deve ter, no mínimo, 5 caracteres.' }),
-  color: z
-    .string()
-    .refine(
-      (value) => /^#(([0-9a-fA-F]{2}){3}|([0-9a-fA-F]){3})$/.test(value ?? ''),
-      'A cor deve ser uma cor Hex.',
-    ),
-});
-
-type BoardFormSchemaType = z.infer<typeof BoardFormSchema>;
-
-const Modal = () => {
+const Modal = ({ title, children, formik, isOpen, closeModal }: ModalProps) => {
   const customStyles = {
     content: {
       top: '50%',
@@ -44,67 +32,20 @@ const Modal = () => {
     },
   };
 
-  const modal = useModal();
-
-  const formik = useFormik<BoardFormSchemaType>({
-    initialValues: {
-      name: '',
-      color: '#000000',
-    },
-    onSubmit: async (values) => {
-      await useBoardCreate(values);
-
-      modal?.closeModal();
-      formik.resetForm();
-    },
-    validate: withZodSchema(BoardFormSchema),
-    validateOnChange: false,
-    validateOnBlur: false,
-  });
-
   ReactModal.setAppElement('#root');
 
+  const TypedReactModal = ReactModal as unknown as React.FC<ReactModal.Props>;
+
   return (
-    <ReactModal
-      isOpen={modal?.modalIsOpen as boolean}
-      onRequestClose={modal?.closeModal}
+    <TypedReactModal
+      isOpen={isOpen}
+      onRequestClose={closeModal}
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <h2 style={{ lineHeight: '3rem' }}>Board</h2>
-      <span>Criar um novo board</span>
-      <form onSubmit={formik.handleSubmit}>
-        <input
-          type="text"
-          placeholder="Digite o nome do board"
-          style={{
-            width: '80%',
-            padding: '0.5rem',
-            margin: '0.5rem 0',
-          }}
-          {...formik.getFieldProps('name')}
-        />
-        <p style={{ color: `${themes.error}` }}>{formik.errors.name}</p>
-        <input
-          type="color"
-          {...formik.getFieldProps('color')}
-          style={{ width: '80%', margin: '0.5rem 0' }}
-        />
-        <button
-          type="submit"
-          style={{
-            width: '100%',
-            padding: '0.5rem 0',
-            background: `${themes.primaryColor}`,
-            border: 0,
-            borderRadius: '5px',
-            cursor: 'pointer',
-          }}
-        >
-          Criar board
-        </button>
-      </form>
-    </ReactModal>
+      <h2>{title}</h2>
+      <form onSubmit={formik.handleSubmit}>{children}</form>
+    </TypedReactModal>
   );
 };
 
