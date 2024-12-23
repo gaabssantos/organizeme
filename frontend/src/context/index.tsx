@@ -5,6 +5,7 @@ import { themes } from '../styles/themes.style';
 import { BoardsProvider } from './useBoards';
 import { CardsProvider } from './useCard';
 import { CardMessageProvider } from './useCardMessage';
+import { ListsProvider } from './useList';
 import { ModalProvider } from './useModal';
 import { UserLoggedProvider } from './useUserLogged';
 
@@ -18,12 +19,14 @@ const Context = ({ children }: PropsWithChildren) => {
           <BoardsProvider>
             <CardsProvider>
               <BoardsProvider>
-                <SkeletonTheme
-                  baseColor={themes.sideColor}
-                  highlightColor={themes.hoverColor}
-                >
-                  {children}
-                </SkeletonTheme>
+                <ListsProvider>
+                  <SkeletonTheme
+                    baseColor={themes.sideColor}
+                    highlightColor={themes.hoverColor}
+                  >
+                    {children}
+                  </SkeletonTheme>
+                </ListsProvider>
               </BoardsProvider>
             </CardsProvider>
           </BoardsProvider>

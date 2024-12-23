@@ -8,6 +8,7 @@ import { z } from 'zod';
 
 import { useBoards } from '../../context/useBoards';
 import { useCards } from '../../context/useCard';
+import { useLists } from '../../context/useList';
 import { useModal } from '../../context/useModal';
 import { useUserLogged } from '../../context/useUserLogged';
 import { useBoardIndexId } from '../../hooks/useBoard';
@@ -57,8 +58,8 @@ const Board = ({ currentId }: BoardProps) => {
   });
 
   const cardContext = useCards();
+  const listContext = useLists();
 
-  const [list, setList] = useState<IList[]>([]);
   const [isInputShow, setIsInputShow] = useState('');
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -130,7 +131,7 @@ const Board = ({ currentId }: BoardProps) => {
 
       if (!lists.result) return false;
 
-      setList(lists.result as IList[]);
+      listContext?.setLists(lists.result as IList[]);
     };
 
     fetchBoardsId();
@@ -148,7 +149,7 @@ const Board = ({ currentId }: BoardProps) => {
               <IoAddSharp onClick={() => modal?.openModal('list')} />
             </BoardHeader>
             <BoardLists>
-              {list.map((lst) => (
+              {listContext?.lists.map((lst) => (
                 <List key={lst.id}>
                   <h3>{lst.name}</h3>
                   {cardContext?.cards

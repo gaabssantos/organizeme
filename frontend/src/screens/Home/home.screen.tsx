@@ -9,9 +9,10 @@ import Header from '../../components/Header/header.component';
 import Modal from '../../components/Modal/modal.component';
 import Sidebar from '../../components/Sidebar/sidebar.component';
 import { useBoards } from '../../context/useBoards';
+import { useLists } from '../../context/useList';
 import { useModal } from '../../context/useModal';
 import { useBoardCreate, useBoardIndex } from '../../hooks/useBoard';
-import { useListCreate } from '../../hooks/useList';
+import { useListCreate, useListIndex } from '../../hooks/useList';
 import { themes } from '../../styles/themes.style';
 
 interface IBoard {
@@ -21,19 +22,36 @@ interface IBoard {
   color: string;
 }
 
+interface IList {
+  id: string;
+  board_id: string;
+  name: string;
+}
+
 const Home = () => {
   const params = useParams();
   const modal = useModal();
   const location = useLocation();
 
   const boardsContext = useBoards();
+  const listsContext = useLists();
 
-  const fetchBoardsId = async () => {
+  const fetchBoards = async () => {
     const boards = await useBoardIndex();
 
     if (!boards.result) return false;
 
     boardsContext?.setBoards(boards.result as unknown as IBoard[]);
+  };
+
+  const fetchLists = async () => {
+    const boardId = location.pathname.split('/')[2];
+
+    const lists = await useListIndex(boardId);
+
+    if (!lists.result) return false;
+
+    listsContext?.setLists(lists.result as unknown as IList[]);
   };
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -62,7 +80,7 @@ const Home = () => {
     onSubmit: async (values: any) => {
       await useBoardCreate(values);
 
-      fetchBoardsId();
+      fetchBoards();
 
       modal?.closeModal();
       boardFormik.resetForm();
@@ -95,6 +113,8 @@ const Home = () => {
         board_id: boardId,
         name: values.name,
       });
+
+      fetchLists();
 
       modal?.closeModal();
       listFormik.resetForm();
@@ -171,7 +191,7 @@ const Home = () => {
             cursor: 'pointer',
           }}
         >
-          Criar board
+          Criar lista
         </button>
       </Modal>
       <Flex>
