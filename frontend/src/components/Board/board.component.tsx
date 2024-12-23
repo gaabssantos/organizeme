@@ -3,8 +3,10 @@ import { IoAddSharp } from 'react-icons/io5';
 import { useNavigate } from 'react-router-dom';
 
 import { useBoards } from '../../context/useBoards';
+import { useModal } from '../../context/useModal';
 import { useUserLogged } from '../../context/useUserLogged';
 import { useBoardIndexId } from '../../hooks/useBoard';
+import { useListIndex } from '../../hooks/useList';
 import { themes } from '../../styles/themes.style';
 import SkeletonCard from '../SkeletonCard/skeleton-card.component';
 import { BoardHeader, BoardLists, Card, Container, List } from './board.styles';
@@ -20,6 +22,12 @@ interface IBoard {
   color: string;
 }
 
+interface IList {
+  id: string;
+  board_id: string;
+  name: string;
+}
+
 const Board = ({ currentId }: BoardProps) => {
   const isUserLogged = useUserLogged();
   const [board, setBoard] = useState<IBoard>({
@@ -29,8 +37,11 @@ const Board = ({ currentId }: BoardProps) => {
     color: '#000000',
   });
 
+  const [list, setList] = useState<IList[]>([]);
+
   const navigate = useNavigate();
   const boardsArr = useBoards();
+  const modal = useModal();
 
   useEffect(() => {
     const fetchBoardsId = async () => {
@@ -41,7 +52,18 @@ const Board = ({ currentId }: BoardProps) => {
       setBoard(boards.result);
     };
 
+    const fetchLists = async () => {
+      const boardId = location.pathname.split('/')[2];
+
+      const lists = await useListIndex(boardId);
+
+      if (!lists.result) return false;
+
+      setList(lists.result as IList[]);
+    };
+
     fetchBoardsId();
+    fetchLists();
   }, [boardsArr?.boards, currentId, navigate]);
 
   return (
@@ -51,54 +73,20 @@ const Board = ({ currentId }: BoardProps) => {
           <>
             <BoardHeader>
               <h1>{board?.name}</h1>
-              <IoAddSharp />
+              <IoAddSharp onClick={() => modal?.openModal('list')} />
             </BoardHeader>
             <BoardLists>
-              <List>
-                <h3>To do</h3>
-                <Card>Project planning</Card>
-                <Card>Teste</Card>
-                <button>
-                  <IoAddSharp />
-                  Add card
-                </button>
-              </List>
-              <List>
-                <h3>To do</h3>
-                <Card>Project planning</Card>
-                <Card>Teste</Card>
-                <button>
-                  <IoAddSharp />
-                  Add card
-                </button>
-              </List>
-              <List>
-                <h3>To do</h3>
-                <Card>Project planning</Card>
-                <Card>Teste</Card>
-                <button>
-                  <IoAddSharp />
-                  Add card
-                </button>
-              </List>
-              <List>
-                <h3>To do</h3>
-                <Card>Project planning</Card>
-                <Card>Teste</Card>
-                <button>
-                  <IoAddSharp />
-                  Add card
-                </button>
-              </List>
-              <List>
-                <h3>To do</h3>
-                <Card>Project planning</Card>
-                <Card>Teste</Card>
-                <button>
-                  <IoAddSharp />
-                  Add card
-                </button>
-              </List>
+              {list.map((lst) => (
+                <List>
+                  <h3>{lst.name}</h3>
+                  <Card>Project planning</Card>
+                  <Card>Teste</Card>
+                  <button>
+                    <IoAddSharp />
+                    Add card
+                  </button>
+                </List>
+              ))}
             </BoardLists>
           </>
         ) : (
