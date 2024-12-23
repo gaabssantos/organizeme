@@ -16,7 +16,7 @@ export class UserController {
       const accountFound = await this.userService.findByEmail(email);
 
       if (accountFound) {
-        return res.status(StatusCodes.UNAUTHORIZED).json({
+        res.status(StatusCodes.UNAUTHORIZED).json({
           errMessage: 'This email already exists..',
           errCode: 'email_exists',
         });
@@ -34,7 +34,7 @@ export class UserController {
 
       sendEmail(email, name, user.verificationCode);
 
-      return res.status(StatusCodes.CREATED).json(user);
+      res.status(StatusCodes.CREATED).json(user);
     } catch (err) {
       next(err);
     }
@@ -46,12 +46,12 @@ export class UserController {
     const accountFound = await this.userService.accountVerification(code);
 
     if (accountFound) {
-      return res.status(StatusCodes.OK).json({
+      res.status(StatusCodes.OK).json({
         message: 'Your account was verified.',
         messageCode: 'account_verified',
       });
     } else {
-      return res.status(StatusCodes.UNAUTHORIZED).json({
+      res.status(StatusCodes.UNAUTHORIZED).json({
         errMessage: 'This code is incorrect or expired.',
         errCode: 'code_incorrect',
       });

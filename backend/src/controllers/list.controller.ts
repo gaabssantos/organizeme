@@ -23,7 +23,9 @@ export class ListController {
 
       const listCreated = await this.listService.create({ board_id, name });
 
-      return res.status(StatusCodes.CREATED).json(listCreated);
+      res.status(StatusCodes.CREATED).json(listCreated);
+
+      return;
     } catch (err) {
       next(err);
     }

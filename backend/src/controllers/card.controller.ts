@@ -27,7 +27,7 @@ export class CardController {
         list_id,
       });
 
-      return res.status(StatusCodes.CREATED).json(card);
+      res.status(StatusCodes.CREATED).json(card);
     } catch (err) {
       next(err);
     }

@@ -17,7 +17,7 @@ export class BoardController {
         color,
       });
 
-      return res.status(StatusCodes.CREATED).json(boardCreated);
+      res.status(StatusCodes.CREATED).json(boardCreated);
     } catch (err) {
       next(err);
     }
@@ -29,7 +29,7 @@ export class BoardController {
 
       const boardDeleted = await this.boardService.delete(id);
 
-      return res.status(StatusCodes.OK).json(boardDeleted);
+      res.status(StatusCodes.OK).json(boardDeleted);
     } catch (err) {
       next(err);
     }
@@ -40,7 +40,7 @@ export class BoardController {
       const id = req.query.userId as string;
       const boards = await this.boardService.index(id);
 
-      return res.status(StatusCodes.OK).json(boards);
+      res.status(StatusCodes.OK).json(boards);
     } catch (err) {
       next(err);
     }
@@ -51,7 +51,7 @@ export class BoardController {
       const { id } = req.params;
       const boards = await this.boardService.indexById(id);
 
-      return res.status(StatusCodes.OK).json(boards);
+      res.status(StatusCodes.OK).json(boards);
     } catch (err) {
       next(err);
     }

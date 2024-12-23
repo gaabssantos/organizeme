@@ -58,7 +58,7 @@ export class SessionController {
         ),
       };
 
-      return res.status(StatusCodes.OK).json(userSession);
+      res.status(StatusCodes.OK).json(userSession);
     } catch (err) {
       next(err);
     }
