@@ -1,9 +1,9 @@
 {
   "development": {
     "username": "postgres",
-    "password": "postgres",
+    "password": "organizemepostgres",
     "database": "organizeme",
-    "host": "localhost",
+    "host": "db.zzufbojwhkhntonfgsxc.supabase.co",
     "dialect": "postgres"
   },
   "test": {
