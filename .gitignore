@@ -1,3 +1,4 @@
 .env
 .yarn
 node_modules
+backend/src/database/config/config.json
