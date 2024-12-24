@@ -26,15 +26,17 @@ const Sidebar = () => {
       </SideItem>
       {isUserLogged?.isUserLogged() && (
         <>
-          {boards?.boards.map((board) => (
-            <Board
-              key={board.id}
-              onClick={() => navigate(`/board/${board.id}`)}
-            >
-              <BoardColor $color={board.color} />
-              <BoardText>{board.name}</BoardText>
-            </Board>
-          ))}
+          {boards?.boards &&
+            boards?.boards.length > 0 &&
+            boards?.boards.map((board) => (
+              <Board
+                key={board.id}
+                onClick={() => navigate(`/board/${board.id}`)}
+              >
+                <BoardColor $color={board.color} />
+                <BoardText>{board.name}</BoardText>
+              </Board>
+            ))}
         </>
       )}
     </Container>
