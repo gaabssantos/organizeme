@@ -1,12 +1,12 @@
 import { Sequelize } from 'sequelize';
 
 export const sequelize = new Sequelize(
-  'postgresql://postgres:organizemepostgres@db.zzufbojwhkhntonfgsxc.supabase.co:5432/organizeme',
+  process.env.POSTGRES_DATABASE as string,
+  process.env.POSTGRES_USERNAME as string,
+  process.env.POSTGRES_PASSWORD as string,
   {
+    host: process.env.POSTGRES_HOST as string,
     dialect: 'postgres',
-    dialectOptions: {
-      ssl: true,
-    },
   },
 );
 
