@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useBoards } from '../../context/useBoards';
 import { useModal } from '../../context/useModal';
 import { useUserLogged } from '../../context/useUserLogged';
+import SkeletonBoard from '../SkeletonBoard/skeleton-board.component';
 import {
   Board,
   BoardColor,
@@ -28,15 +29,26 @@ const Sidebar = () => {
         <>
           {boards?.boards &&
             boards?.boards.length > 0 &&
-            boards?.boards.map((board) => (
-              <Board
-                key={board.id}
-                onClick={() => navigate(`/board/${board.id}`)}
-              >
-                <BoardColor $color={board.color} />
-                <BoardText>{board.name}</BoardText>
-              </Board>
-            ))}
+            boards?.boards.map((board) =>
+              board.name !== '' ? (
+                <Board
+                  key={board.id}
+                  onClick={() => navigate(`/board/${board.id}`)}
+                >
+                  <BoardColor $color={board.color} />
+                  <BoardText>{board.name}</BoardText>
+                </Board>
+              ) : (
+                <>
+                  <SkeletonBoard />
+                  <SkeletonBoard />
+                  <SkeletonBoard />
+                  <SkeletonBoard />
+                  <SkeletonBoard />
+                  <SkeletonBoard />
+                </>
+              ),
+            )}
         </>
       )}
     </Container>
