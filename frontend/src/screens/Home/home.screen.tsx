@@ -1,5 +1,6 @@
 import { useFormik } from 'formik';
 import { withZodSchema } from 'formik-validator-zod';
+import { useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import { z } from 'zod';
 
@@ -29,6 +30,13 @@ interface IList {
 }
 
 const Home = () => {
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = 'scroll';
+    };
+  }, []);
+
   const params = useParams();
   const modal = useModal();
   const location = useLocation();
