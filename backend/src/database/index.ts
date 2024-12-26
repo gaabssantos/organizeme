@@ -1,7 +1,13 @@
 import { Sequelize } from 'sequelize';
 
 export const sequelize = new Sequelize(
-  'postgresql://postgres:rOJsYUkSCPgTHKJhWzHMfJztFtYyWldn@junction.proxy.rlwy.net:39606/railway',
+  process.env.POSTGRES_DATABASE as string,
+  process.env.POSTGRES_USERNAME as string,
+  process.env.POSTGRES_PASSWORD as string,
+  {
+    host: process.env.POSTGRES_HOST as string,
+    dialect: 'postgres',
+  },
 );
 
 const setupDatabase = async () => {
