@@ -40,12 +40,12 @@ const Sidebar = () => {
                 </Board>
               ) : (
                 <>
-                  <SkeletonBoard />
-                  <SkeletonBoard />
-                  <SkeletonBoard />
-                  <SkeletonBoard />
-                  <SkeletonBoard />
-                  <SkeletonBoard />
+                  <SkeletonBoard width={100} />
+                  <SkeletonBoard width={100} />
+                  <SkeletonBoard width={100} />
+                  <SkeletonBoard width={100} />
+                  <SkeletonBoard width={100} />
+                  <SkeletonBoard width={100} />
                 </>
               ),
             )}

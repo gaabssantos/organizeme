@@ -3,10 +3,14 @@ import Skeleton from 'react-loading-skeleton';
 import { themes } from '../../styles/themes.style';
 import { Board } from './skeleton-board.styles';
 
-const SkeletonBoard = () => {
+type SkeletonBoard = {
+  width: number;
+};
+
+const SkeletonBoard = ({ width }: SkeletonBoard) => {
   return (
     <Board>
-      <Skeleton width={200} baseColor={themes.cardColor} />
+      <Skeleton width={width} baseColor={themes.cardColor} />
     </Board>
   );
 };
